@@ -106,12 +106,17 @@ tick(); setInterval(tick, 1000);
 
 const audio = document.getElementById("music");
 const btn = document.getElementById("musicBtn");
-function tryMusic(){
-  audio.play().then(()=>{btn.style.display="block"}).catch(()=>{btn.style.display="block"});
-}
-document.addEventListener("click", tryMusic, {once:true});
-btn.addEventListener("click", ()=>audio.paused ? audio.play() : audio.pause());
+btn.style.display = "block";
+
+btn.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+});
 </script>
+
 
 
 </body>
