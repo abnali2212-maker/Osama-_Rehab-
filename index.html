@@ -92,25 +92,27 @@
 <script>
 const target = new Date("2026-09-04T19:00:00+03:00").getTime();
 function tick(){
-  let x=Math.max(0,target-Date.now());
-  const d=Math.floor(x/86400000); x%=86400000;
-  const h=Math.floor(x/3600000); x%=3600000;
-  const m=Math.floor(x/60000); x%=60000;
-  const s=Math.floor(x/1000);
-  document.getElementById("d").textContent=d;
-  document.getElementById("h").textContent=String(h).padStart(2,"0");
-  document.getElementById("m").textContent=String(m).padStart(2,"0");
-  document.getElementById("s").textContent=String(s).padStart(2,"0");
+  let x = Math.max(0, target - Date.now());
+  const d = Math.floor(x / 86400000); x %= 86400000;
+  const h = Math.floor(x / 3600000); x %= 3600000;
+  const m = Math.floor(x / 60000); x %= 60000;
+  const s = Math.floor(x / 1000);
+  document.getElementById("d").textContent = d;
+  document.getElementById("h").textContent = String(h).padStart(2,"0");
+  document.getElementById("m").textContent = String(m).padStart(2,"0");
+  document.getElementById("s").textContent = String(s).padStart(2,"0");
 }
-tick(); setInterval(tick,1000);
+tick(); setInterval(tick, 1000);
 
-const audio=document.getElementById("music"), btn=document.getElementById("musicBtn");
+const audio = document.getElementById("music");
+const btn = document.getElementById("musicBtn");
 function tryMusic(){
-  if(!audio.getAttribute("src")) return;
   audio.play().then(()=>{btn.style.display="block"}).catch(()=>{btn.style.display="block"});
 }
-document.addEventListener("click",tryMusic,{once:true});
-btn.addEventListener("click",()=>audio.paused?audio.play():audio.pause());
+document.addEventListener("click", tryMusic, {once:true});
+btn.addEventListener("click", ()=>audio.paused ? audio.play() : audio.pause());
 </script>
+
+
 </body>
 </html>
